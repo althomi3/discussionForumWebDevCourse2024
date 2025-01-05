@@ -45,6 +45,16 @@ app.post("/courses", async (c) => {
     return c.json(return_data); // returns json response
 });
 
-// D: 
-// GET /courses/:id/topics, where ':id' is a path variable, returns a JSON document that looks as follows: '{"topics": [ { "id": 1, "name": "Topic 1" }, {"id": 2, "name": "Topic 2" } ] }'. Nothing is done with the path variable.
+// D: GET REQUEST / /courses/:id/topics
+// clients query server with GET request
+// ':id' is a path variable
+// server returns a JSON document that looks as follows: 
+// '{"topics": [ { "id": 1, "name": "Topic 1" }, {"id": 2, "name": "Topic 2" } ] }'. 
+// Nothing is done with the path variable.
+app.get("/courses/:id/topics", (c) => {
+    const id = c.req.param("id"); // stores path variable from request
+    const response_data = {"topics": [ { "id": 1, "name": "Topic 1" }, {"id": 2, "name": "Topic 2" } ] }; // defines json response
+    return c.json(response_data); // returns json response
+})
+
 export default app;
