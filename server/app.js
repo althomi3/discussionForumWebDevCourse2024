@@ -19,4 +19,17 @@ app.get("/courses", (c) => {
     return c.json(data);
 });
 
+// ROUTING /COURSES/:ID
+// client queries server on path /courses/:id
+// server returns a JSON document:
+//'{"course": {"id": :id, "name": "Course Name" } }'
+// The name is a string (just "Course Name", not e.g. "Web Software Development",
+//':id' is retrieved from the path and is a number).
+
+app.get("/courses/:id", (c) => {
+    const id = c.req.param("id");
+    const data = {"course": {"id": `${id}`, "name": "Course Name" }}
+    return c.json(data);
+});
+
 export default app;
