@@ -55,6 +55,19 @@ app.get("/courses/:id/topics", (c) => {
     const id = c.req.param("id"); // stores path variable from request
     const response_data = {"topics": [ { "id": 1, "name": "Topic 1" }, {"id": 2, "name": "Topic 2" } ] }; // defines json response
     return c.json(response_data); // returns json response
-})
+});
+
+// E: GET REQUEST / /courses/:cId/topics/:tId/posts
+// clients query request to server and send ':cId' and ':tId' are path variables
+// server returns a JSON document that looks as follows: 
+// '{"posts": [ {"id": 1, "title": "Post 1" }, {"id": 2, "title": "Post 2" } ] }'. 
+// Nothing is done with the path variables.
+
+app.get("/courses/:cId/topics/:tId/posts", (c) => {
+    const cID = c.req.param("cId");
+    const tID = c.req.param("tId");
+    const response_data = {"posts": [ {"id": 1, "title": "Post 1" }, {"id": 2, "title": "Post 2" } ] };
+    return c.json(response_data);
+});
 
 export default app;
