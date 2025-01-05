@@ -8,10 +8,10 @@ const app = new Hono(); // instantiates hono object from hono web framework
 
 // ---PROJECT IMPLEMENTATIONN SERVER SIDE---
 
-// A: ROUTING LANDING PAGE
+// LP: ROUTING LANDING PAGE
 app.get("/", (c) => c.text("Hello"));
 
-// ROUTING GET REQUEST / /COURSES PATH
+// A: ROUTING GET REQUEST / /COURSES PATH
 // client queries server with GET request, server returns the following JSON document
 // '{"courses": [ {"id": 1, "name": "Web Software Development" }, {"id": 2, "name": "Device-Agnostic Design" } ] }'
 app.get("/courses", (c) => {
@@ -67,6 +67,20 @@ app.get("/courses/:cId/topics/:tId/posts", (c) => {
     const cID = c.req.param("cId");
     const tID = c.req.param("tId");
     const response_data = {"posts": [ {"id": 1, "title": "Post 1" }, {"id": 2, "title": "Post 2" } ] };
+    return c.json(response_data);
+});
+
+// F: GET REQUEST / /courses/:cId/topics/:tId/posts/:pId
+// clients query the server and send ':cId', ':tId', and ':pId' as path variables
+// server returns a JSON document that looks as follows: 
+// '{"post": {"id": :pId, "title": "Post Title" }, "answers": [ { "id": 1, "content": "Answer 1" }, {"id": 2, "content": "Answer 2" } ] }'. 
+// The path variables :cId and :tId are not used.
+
+app.get("/courses/:cId/topics/:tId/posts/:pId", (c) => {
+    const cID = c.req.param("cId");
+    const tID = c.req.param("tId");
+    const pID = c.req.param("pId");
+    const response_data = {"post": {"id": `${pID}`, "title": "Post Title" }, "answers": [ { "id": 1, "content": "Answer 1" }, {"id": 2, "content": "Answer 2" } ] }
     return c.json(response_data);
 });
 
