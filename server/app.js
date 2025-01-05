@@ -26,8 +26,9 @@ app.get("/courses", (c) => {
 // The name is a string (just "Course Name", not e.g. "Web Software Development",
 //':id' is retrieved from the path and is a number).
 app.get("/courses/:id", (c) => {
-    const id = c.req.param("id");
-    const data = {"course": {"id": `${id}`, "name": "Course Name" }}
+    const id = Number(c.req.param("id"));
+    // const id = Number(id);
+    const data = {"course": {"id": id, "name": "Course Name" }}
     return c.json(data);
 });
 
@@ -40,8 +41,10 @@ app.get("/courses/:id", (c) => {
 
 app.post("/courses", async (c) => {
     const post_data = await c.req.json(); // retrieves json data from http request body
-    const course_name = post_data.course.name; // accesses course name property
-    const return_data = {"course": {"id":3, "name": `${course_name}`}} // defined json data for response
+    // console.log(`this is the json data`, post_data); // for debugging
+    const course_name = post_data.name; // accesses course name property
+    console.log('Course name:', course_name); // for debugging
+    const return_data = {"course": {"id":3, "name": course_name}} // defined json data for response
     return c.json(return_data); // returns json response
 });
 
@@ -79,8 +82,8 @@ app.get("/courses/:cId/topics/:tId/posts", (c) => {
 app.get("/courses/:cId/topics/:tId/posts/:pId", (c) => {
     const cID = c.req.param("cId");
     const tID = c.req.param("tId");
-    const pID = c.req.param("pId");
-    const response_data = {"post": {"id": `${pID}`, "title": "Post Title" }, "answers": [ { "id": 1, "content": "Answer 1" }, {"id": 2, "content": "Answer 2" } ] }
+    const pID = Number(c.req.param("pId")); // converts text-based id into number, all http requests are text-based
+    const response_data = {"post": {"id": pID, "title": "Post Title" }, "answers": [ { "id": 1, "content": "Answer 1" }, {"id": 2, "content": "Answer 2" } ] }
     return c.json(response_data);
 });
 
