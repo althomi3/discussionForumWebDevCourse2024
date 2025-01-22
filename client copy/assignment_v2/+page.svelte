@@ -24,7 +24,6 @@
   import Movement from "$lib/components/Movement.svelte";
   import TodosShared from "$lib/components/TodosShared.svelte";
   import TodoFormSharedState from "$lib/components/TodoFormSharedState.svelte";
-  import Questions from "$lib/components/Questions.svelte";
 
 </script>
 
@@ -49,4 +48,3 @@
 <Movement />
 <Location />
 <TodosShared />
-<Questions />

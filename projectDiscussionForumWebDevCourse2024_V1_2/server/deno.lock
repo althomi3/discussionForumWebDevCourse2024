@@ -1,0 +1,19 @@
+{
+  "version": "4",
+  "specifiers": {
+    "jsr:@hono/hono@4.6.5": "4.6.5"
+  },
+  "jsr": {
+    "@hono/hono@4.6.5": {
+      "integrity": "68efe4a0ab7c4fb082cb71aa894a25e1c6cfad6d124dc943471e6758a7a1bdee"
+    }
+  },
+  "remote": {
+    "https://deno.land/std@0.132.0/node/internal_binding/_winerror.ts": "8811d4be66f918c165370b619259c1f35e8c3e458b8539db64c704fbde0a7cd2"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@hono/hono@4.6.5"
+    ]
+  }
+}
