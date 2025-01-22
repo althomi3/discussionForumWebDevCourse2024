@@ -87,18 +87,4 @@ app.get("/courses/:cId/topics/:tId/posts/:pId", (c) => {
     return c.json(response_data);
 });
 
-// HTML Response instead of text or json response
-app.get("/html", async (c) => {
-    return c.html(`<!DOCTYPE html>
-  <html>
-    <head>
-      <title>Title</title>
-    </head>
-    <body>
-      <h1>Magic!</h1>
-      <p>Now, we will familiarize ourselves with HTML.</p>
-    </body>
-  </html>`);
-  });
-
 export default app;
